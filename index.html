@@ -1,62 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>rock-paper-scissors</title>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">  
 </head>
+
 <body>
+  <div id="container">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="result"></div>
+    <div id="score">Player: 0, Computer 0</div>
+    <div id="winner"></div>
+  </div>
 
-  <script>
-
-const array = ['rock', 'paper', 'scissors'];
-let counter = 0;
-let gamesWon = 0;
-
-function computerPlay() {
-  return array[Math.floor(Math.random() * 3)];
-}
-
-function playRound(playerSelection, computerSelection) {
-	playerSelection = playerSelection.toLowerCase();
-  switch (true) {
-    case playerSelection == computerSelection:
-    console.log('Draw. Try again')
-    break;
-    case (playerSelection == 'rock') && (computerSelection == 'paper')
-      || (playerSelection == 'paper') && (computerSelection == 'scissors')
-      || (playerSelection == 'scissors') && (computerSelection == 'rock'):
-    ++counter;
-    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
-    break;
-    default:
-    ++counter;
-    ++gamesWon;
-    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-  }
-}
-
-function game() { 
-  
-  while (counter < 5) {
-    let playerSelection = prompt("Rock, paper or scissors?");
-    playerSelection = playerSelection.toLowerCase();
-      while (!((playerSelection == 'rock') || (playerSelection == 'paper') || (playerSelection == 'scissors'))){
-      playerSelection = prompt("Your choice was invalid. Choose Rock, paper or scissors");
-      }
-    let computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-  }
-  if (gamesWon > 2){
-    console.log(`Congratulations! You won the game by ${gamesWon} out of 5`);
-  }
-  else{
-    console.log(`You lost the game by ${gamesWon} out of 5`);
-  }
-}
-
-game();
-
-  </script>
+  <script src='js/main.js'></script>
 
 </body>
 </html>
